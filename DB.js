@@ -35,36 +35,22 @@ class DB {
 	}
 
 	_saveDataToFile() {
-		let dataStr = '';
-		// ensure the null data is written at the top, if it exists
-		if (this.data[null]) {
-			for (const key in this.data[null]) {
-				const value = this.data[null][key];
-				if (typeof value === 'string') {
-					// Write string values directly to the file
-					dataStr += `${key}=${value}\n`;
-				} else {
-					// Iterate over the keys of non-string values
-					for (const subKey in value) {
-						dataStr += `${key}.${subKey}=${value[subKey]}\n`;
-					}
+		let data = '';
+
+		for (let key in this.data) {
+			let value = this.data[key];
+			if (typeof value !== 'object') {
+				data += `${key}=${value}\n`;
+			} else {
+				data += `{${key}}\n`;
+				for(let skey in value) {  // does the part thing
+					let svalue = value[skey] // skey and svalue mean sub key and sub value
+					data += `${skey}=${svalue}`;
 				}
 			}
 		}
 
-		for (const part in this.data) {
-			if (part !== 'null') {
-				//ignore null data here
-				dataStr += `{${part}}\n`;
-				for (const key in this.data[part]) {
-					if (part === 'thingy') {
-						// Only write keys that belong to the "thingy" part
-						dataStr += `${key}=${this.data[part][key]}\n`;
-					}
-				}
-			}
-		}
-		fs.writeFileSync(this.filePath, dataStr, 'utf8');
+		fs.writeFileSync(this.filePath, data, 'utf8');
 	}
 
 	// Public method to read a value
