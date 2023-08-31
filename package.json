@@ -1,7 +1,7 @@
 {
-	"name": "textdb",
+	"name": "textsyntaxdb",
 	"version": "1.0.0",
-	"description": "Database written in .ini or .txt",
+	"description": "Database written in .ini or .txt with a syntax",
 	"main": "index.js",
 	"type": "module",
 	"scripts": {
