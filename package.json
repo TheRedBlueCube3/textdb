@@ -1,0 +1,21 @@
+{
+	"name": "textdb",
+	"version": "1.0.0",
+	"description": "Database written in .ini or .txt",
+	"main": "index.js",
+	"type": "module",
+	"scripts": {
+		"test": "node index.js"
+	},
+	"keywords": [
+		"database",
+		"db",
+		"text",
+		"textdb"
+	],
+	"author": "LRS",
+	"license": "ISC",
+	"dependencies": {
+		"@types/node": "^20.5.6"
+	}
+}
