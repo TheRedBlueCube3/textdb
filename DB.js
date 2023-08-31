@@ -43,8 +43,8 @@ class DB {
 				data += `${key}=${value}\n`;
 			} else {
 				data += `{${key}}\n`;
-				for(let skey in value) {  // does the part thing
-					let svalue = value[skey] // skey and svalue mean sub key and sub value
+				for (let skey in value) {
+					let svalue = value[skey];
 					data += `${skey}=${svalue}`;
 				}
 			}
